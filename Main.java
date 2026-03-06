@@ -26,21 +26,21 @@ public class Main {
 
     public static void selectionSort(int[] array, boolean ascending) {
         for (int i = 0; i < array.length; i++) {
-            int minIndex = i;
+            int targetIndex = i;
 
             for (int i_ = i + 1; i_ < array.length; i_++) {
                 if (ascending) {
-                    if (array[i_] < array[minIndex])
-                        minIndex = i_;
+                    if (array[i_] < array[targetIndex])
+                        targetIndex = i_;
                 } else {
-                    if (array[i_] > array[minIndex])
-                        minIndex = i_;
+                    if (array[i_] > array[targetIndex])
+                        targetIndex = i_;
                 }
             }
 
             int temp = array[i];
-            array[i] = array[minIndex];
-            array[minIndex] = temp;
+            array[i] = array[targetIndex];
+            array[targetIndex] = temp;
         }
     }
 }
