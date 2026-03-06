@@ -1,12 +1,15 @@
 public class Main {
     public static void main(String[] args) {
-        int[] array = { 29, 10, 14, 37, 13 };
+        int[] array = { 29, 10, 14, 37, 13, 543, 7, 17, 2, 8, 12, 15, 56 };
         System.out.println("Original Array: ");
         printArray(array);
 
         selectionSort(array);
+        System.out.println("Ascending Array: ");
+        printArray(array);
 
-        System.out.println("Sorted Array: ");
+        selectionSort(array, false);
+        System.out.println("Decending Array: ");
         printArray(array);
     }
 
@@ -18,21 +21,26 @@ public class Main {
     }
 
     public static void selectionSort(int[] array) {
-        int start = 0;
+        selectionSort(array, true);
+    }
 
+    public static void selectionSort(int[] array, boolean ascending) {
         for (int i = 0; i < array.length; i++) {
-            int minIndex = start;
+            int minIndex = i;
 
-            for (int i_ = start; i_ < array.length; i_++) {
-                if (array[i_] < array[minIndex])
-                    minIndex = i_;
+            for (int i_ = i + 1; i_ < array.length; i_++) {
+                if (ascending) {
+                    if (array[i_] < array[minIndex])
+                        minIndex = i_;
+                } else {
+                    if (array[i_] > array[minIndex])
+                        minIndex = i_;
+                }
             }
 
-            int temp = array[start];
-            array[start] = array[minIndex];
+            int temp = array[i];
+            array[i] = array[minIndex];
             array[minIndex] = temp;
-
-            start++;
         }
     }
 }
